@@ -10,7 +10,13 @@ jobs:
         uses: remdub/hw-composite-action@v0.1
         with:
           who-to-greet: 'Mona the Octocat'
-      - run: echo random-number "$RANDOM_NUMBER"
+      - run: |
+          for i in {1..10}
+          do
+            echo step $i
+            echo random-number "$RANDOM_NUMBER"
+            sleep 10
+          done
         shell: bash
         env:
           RANDOM_NUMBER: ${{ steps.foo.outputs.random-number }}
